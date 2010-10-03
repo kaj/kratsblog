@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>{% block wholetitle %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}site.css"/>
+  </head>
+  
+  <body>
+    <div id="wrapper">
+      <div id="header">
+	<h1><a href="/">Tygbittar</a></h1>
+      </div>
+      <div id="foowrap">
+	<div id="mainwrap">
+	  <div id="main">
+	    {% block main %}{% endblock %}
+	  </div>
+	</div>
+	<div id="sidebarwrap">
+	  <div id="sidebar">
+	    (sidebar)
+	  </div>
+	</div>
+      </div>
+      <div id="footer">
+	Ska det stå något här?
+      </div>
+    </div>
+  </body>
+</html>

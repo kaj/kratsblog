@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load markup %}
+
+{% block wholetitle %}Tygbittar{% endblock %}
+
+{% block main %}
+{% for post in posts %}
+<div class="postInIndex">
+  <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+  <p class="dateline">{{post.posted_time}}</p>
+  <div class="postContent">
+    {{post.content|textile}}
+  </div>
+</div>
+{% empty %}
+<p>Tomt var det här</p>
+{% endfor %}
+{% endblock %}
