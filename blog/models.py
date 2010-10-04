@@ -11,6 +11,9 @@ class Post(models.Model):
     slug = AutoSlugField(populate_from='title',
                          unique_with='posted_time__month')
 
+    class Meta:
+        ordering = ['-posted_time']
+    
     def __unicode__(self):
         return u'%s (%s)' % (self.title, self.posted_time)
 
