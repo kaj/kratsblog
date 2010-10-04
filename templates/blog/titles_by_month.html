@@ -1,0 +1,11 @@
+<div>
+  <h2>Inlägg per månad</h2>
+  <dl>
+    {% for post in posts %}
+      {% ifchanged %}
+        <dt>{{post.posted_time|date:"F Y"|capfirst}}</dt>
+      {% endifchanged %}
+      <dd><a href="{{post.get_absolute_url}}">{{post.title}}</a></dd>
+    {% endfor %}
+  </dl>
+</div>
