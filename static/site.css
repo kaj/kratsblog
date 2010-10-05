@@ -53,6 +53,25 @@ html, body {
     text-decoration: underline;
 }
 
+.image {
+    float: right;
+    clear: right;
+    padding: 0 0 0.5em 0.5em;
+}
+.image .caption {
+    font-size: 80%;
+}
+img {
+    border: none;
+}
+.image img {
+    -moz-box-shadow: 0.1em 0.18em 0.8em #444;
+    padding: 0.2em;
+}
+.image img:hover {
+    -moz-box-shadow: 0.1em 0.18em 0.8em black;
+}
+
 h2 {
     margin: 0 0 0.2em 0;
 }

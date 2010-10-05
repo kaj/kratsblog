@@ -1,12 +1,25 @@
 {% extends "base.html" %}
-{% load markup %}
+{% load markup thumbnail %}
 
 {% block wholetitle %}{{post.title}} - Tygbittar{% endblock %}
 
 {% block main %}
   <h2>{{post.title}}</h2>
   <p class="dateline">{{post.posted_time}}</p>
+  
   <div class="postContent">
+    {% for image in images %}
+      <div class="image">
+	{% thumbnail image 800x800 as large %}
+	{% thumbnail image 220x220 as img %}
+	<a href="{{large}}">
+	  <img src="{{img}}" alt="[bild]"
+	       width="{{img.width}}" height="{{img.height}}"/>
+	</a>
+	<div class="caption">{{image.caption|textile}}</div>
+      </div>
+    {% endfor %}
+  
     {{post.content|textile}}
   </div>
 {% endblock %}

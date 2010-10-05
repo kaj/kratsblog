@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markup %}
+{% load markup thumbnail %}
 
 {% block wholetitle %}Tygbittar{% endblock %}
 
@@ -7,6 +7,19 @@
 {% for post in posts %}
 <div class="postInIndex">
   <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
+  {% if post.ximg %}
+    {% with post.ximg as image %}
+      <div class="image">
+	{% thumbnail image 1000x1000 as large %}
+	{% thumbnail image 180x180 as img %}
+	<a href="{{large}}">
+	  <img src="{{img}}" alt="[bild]"
+	       width="{{img.width}}" height="{{img.height}}"/>
+	</a>
+	<div class="caption">{{image.caption|textile}}</div>
+      </div>
+    {% endwith %}
+  {% endif %}
   <p class="dateline">{{post.posted_time}}</p>
   <div class="postContent">
     {{post.linkedshort|textile}}

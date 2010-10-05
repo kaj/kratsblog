@@ -4,6 +4,12 @@ from blog.models import Post
 
 def index(request):
     posts = Post.objects.all()[:5]
+    # TODO Fix this with an annotation?
+    for post in posts:
+        if post.image_set.all().count():
+            post.ximg = post.image_set.all()[0]
+        else:
+            post.ximg = None
     
     return direct_to_template(request, 'blog/index.html', {
             'posts': posts,
@@ -16,4 +22,5 @@ def post_detail(request, year, month, slug):
     
     return direct_to_template(request, 'blog/post_detail.html', {
             'post': post,
+            'images': post.image_set.all,
             })
