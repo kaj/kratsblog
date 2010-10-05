@@ -17,5 +17,6 @@ class Image(models.Model):
     def save(self, *args, **kwargs):
         if not self.order:
             others = Image.objects.filter(post=self.post)
-            self.order = others.aggregate(Max('order'))['order__max'] + 10
+            self.order = \
+                (others.aggregate(Max('order'))['order__max'] or 0) + 10
         super(Image, self).save(*args, **kwargs)
