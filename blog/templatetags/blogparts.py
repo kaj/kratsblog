@@ -7,5 +7,5 @@ register = template.Library()
 @register.inclusion_tag('blog/titles_by_month.html')
 def titles_by_month():
     return {
-        'posts' : Post.objects.all().values('title', 'posted_time')
+        'posts' : Post.objects.all()
         }
