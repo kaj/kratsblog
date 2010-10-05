@@ -12,7 +12,8 @@
       <div class="image">
 	{% thumbnail image 1000x1000 as large %}
 	{% thumbnail image 180x180 as img %}
-	<a href="{{large}}">
+	<a href="{{large}}" rel="image"
+	   title="{{post.title}}: {{image.caption}}">
 	  <img src="{{img}}" alt="[bild]"
 	       width="{{img.width}}" height="{{img.height}}"/>
 	</a>

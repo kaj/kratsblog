@@ -10,9 +10,9 @@
   <div class="postContent">
     {% for image in images %}
       <div class="image">
-	{% thumbnail image 800x800 as large %}
+	{% thumbnail image 1000x1000 as large %}
 	{% thumbnail image 220x220 as img %}
-	<a href="{{large}}">
+	<a href="{{large}}" rel="image" title="{{image.caption}}">
 	  <img src="{{img}}" alt="[bild]"
 	       width="{{img.width}}" height="{{img.height}}"/>
 	</a>
