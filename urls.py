@@ -18,7 +18,8 @@ urlpatterns = patterns(
 
     url('^$', blog.index),
     url('^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z-]+)',
-        blog.post_detail)
+        blog.post_detail),
+    url('^node/(?P<id>[0-9]+)', blog.redirect_from_id),
 )
 
 if settings.DEBUG and settings.MEDIA_URL[0] == '/':

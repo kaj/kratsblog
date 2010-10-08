@@ -1,5 +1,5 @@
 from django.views.generic.simple import direct_to_template
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from blog.models import Post
 
 def index(request):
@@ -24,3 +24,6 @@ def post_detail(request, year, month, slug):
             'post': post,
             'images': post.image_set.all,
             })
+
+def redirect_from_id(request, id):
+    return redirect(get_object_or_404(Post, id=id))
