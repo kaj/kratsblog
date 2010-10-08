@@ -96,3 +96,12 @@ dl dt {
 dl dd {
     margin: 0 0 0.4em 1.6em;
 }
+
+.postInIndex {
+    margin-bottom: 2em;
+}
+.allPostsFooter {
+    border-top: solid 1px #70e050;
+    padding-top: 0.5em;
+    float: left;
+}

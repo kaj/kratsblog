@@ -20,6 +20,8 @@ def index(request, year=None, month=None):
     
     return direct_to_template(request, 'blog/index.html', {
             'posts': posts,
+            'years': [x.year for x
+                      in Post.objects.dates('posted_time', 'year')],
             })
 
 def post_detail(request, year, month, slug):

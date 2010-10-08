@@ -29,4 +29,15 @@
 {% empty %}
 <p>Tomt var det här</p>
 {% endfor %}
+
+{% if years %}
+  <div class="allPostsFooter">
+    <p>Alla inlägg
+      {% for y in years %}
+        <a title="Alla inlägg {{y}}"
+	   href="/{{y}}/">{{y}}</a>{% if not forloop.last %}, {% endif %}
+      {% endfor %}
+    </p>
+  </div>
+{% endif %}
 {% endblock %}
