@@ -61,6 +61,13 @@ html, body {
 .image .caption {
     font-size: 80%;
 }
+.image .caption {
+    max-width: 226px; // corresponds actual image width
+}
+.postInIndex .image .caption {
+    max-width: 186px; // corresponds actual image width
+}
+
 img {
     border: none;
 }
