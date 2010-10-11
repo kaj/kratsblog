@@ -4,11 +4,12 @@ from blog.models import Post
 
 def index(request, year=None, month=None):
     if year:
+        all_posts = Post.objects.order_by('posted_time')
         if month:
-            posts = get_list_or_404(Post, posted_time__year=year,
+            posts = get_list_or_404(all_posts, posted_time__year=year,
                                     posted_time__month=month)
         else:
-            posts = get_list_or_404(Post, posted_time__year=year)
+            posts = get_list_or_404(all_posts, posted_time__year=year)
     else:
         posts = Post.objects.all()[:5]
     # TODO Fix this with an annotation?
