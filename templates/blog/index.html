@@ -10,8 +10,8 @@
 {% for post in posts %}
 <div class="postInIndex">
   <h2><a href="{{post.get_absolute_url}}">{{post.title}}</a></h2>
-  {% if post.ximg %}
-    {% with post.ximg as image %}
+  {% if post.first_image %}
+    {% with post.first_image as image %}
       <div class="image">
 	{% thumbnail image 1000x1000 as large %}
 	{% thumbnail image 180x180 as img %}
