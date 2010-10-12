@@ -4,6 +4,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 from blog import views as blog
+from blog import feeds
+
+feeds = { 'atom' : feeds.AtomFeed, 
+          'rss'  : feeds.RssFeed, }
 
 urlpatterns = patterns(
     '',
@@ -22,6 +26,9 @@ urlpatterns = patterns(
     url('^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z-]+)',
         blog.post_detail),
     url('^node/(?P<id>[0-9]+)', blog.redirect_from_id),
+    (r'^(?P<url>(atom|rss)).xml$', 'django.contrib.syndication.views.feed',
+     {'feed_dict': feeds}
+     ),
 )
 
 if settings.DEBUG and settings.MEDIA_URL[0] == '/':

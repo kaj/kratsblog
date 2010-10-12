@@ -38,3 +38,11 @@ class Post(models.Model):
                 return result(paras[:n])
         
         return self.content
+
+    @property
+    def first_image(self):
+        # TODO Let the manager do this, so its (optionaly) joind in load?
+        if self.image_set.count():
+            return self.image_set.all()[0]
+        else:
+            return None

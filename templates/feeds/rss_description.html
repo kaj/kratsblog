@@ -1,0 +1,21 @@
+{% load markup %}
+{% load thumbnail %}
+<div>
+  {% if obj.first_image %}
+    {% with obj.first_image as image %}
+      <div class="image" style="float: left;">
+	{% thumbnail image 1000x1000 as large %}
+	{% thumbnail image 180x180 as img %}
+	<a href="{{large}}" rel="image"
+	   title="{{post.title}}: {{image.caption}}">
+	  <img src="{{img}}" alt="[bild]"
+	       width="{{img.width}}" height="{{img.height}}"/>
+	</a>
+	<div class="caption">{{image.caption|textile}}</div>
+      </div>
+    {% endwith %}
+  {% endif %}
+  <div class="postContent">
+    {{obj.linkedshort|textile}}
+  </div>
+</div>
