@@ -2,10 +2,13 @@
 from autoslug.fields import AutoSlugField
 from django.db import models
 
+FMT_HELP = (u'Viss formatering tillåten.  _kursiv_ *fet*, "länktext":url.  ' +
+            u'Tomrad för styckesbrytning.')
+
 class Post(models.Model):
     
     title = models.CharField(max_length=200)
-    content = models.TextField()
+    content = models.TextField(help_text=FMT_HELP)
     
     posted_time = models.DateTimeField()
     slug = AutoSlugField(populate_from='title',
