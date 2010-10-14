@@ -10,7 +10,9 @@ class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField(help_text=FMT_HELP)
     
-    posted_time = models.DateTimeField()
+    posted_time = models.DateTimeField(
+        null=True, blank=True,
+        help_text=u'Lämna tomt för att lämna posten opublicerad.')
     slug = AutoSlugField(populate_from='title',
                          unique_with='posted_time__month')
 

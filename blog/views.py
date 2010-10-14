@@ -18,7 +18,7 @@ def index(request, year=None, month=None):
             posts = get_list_or_404(all_posts, posted_time__year=year)
     else:
         head = None
-        posts = Post.objects.all()[:5]
+        posts = Post.objects.exclude(posted_time__exact=None)[:5]
     
     return direct_to_template(request, 'blog/index.html', {
             'head': head,
@@ -38,4 +38,6 @@ def post_detail(request, year, month, slug):
             })
 
 def redirect_from_id(request, id):
-    return redirect(get_object_or_404(Post, id=id))
+    return redirect(get_object_or_404(
+            Post.objects.exclude(posted_time__exact=None),
+            id=id))
