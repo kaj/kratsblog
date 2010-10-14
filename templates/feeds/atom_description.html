@@ -3,7 +3,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   {% if obj.first_image %}
     {% with obj.first_image as image %}
-      <div class="image" style="float: left;">
+      <div class="image" style="float: right;">
 	{% thumbnail image 1000x1000 as large %}
 	{% thumbnail image 180x180 as img %}
 	<a href="http://{{site.domain}}{{large}}" rel="image"
