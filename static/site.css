@@ -8,22 +8,49 @@ html, body {
     margin: 1em auto 2em;
     max-width: 60em;
     background: white;
+    -moz-border-radius: 0.7em;
     /* border: solid 1px black; */
-    -moz-box-shadow: 0 0.4em 1em #404040;
+}
+@media (min-width: 63em) {
+    #wrapper {
+	-moz-box-shadow: 0 0.4em 1em #404040;
+    }
 }
 
 #header, #footer {
     background: #70e050;
+    background: -moz-linear-gradient(-88deg, rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0)), -moz-linear-gradient(-30deg, #70e050, #60b040, white, #e05090);
     padding: 1ex;
     color: white;
     text-shadow: 0.15em 0.05em 0.3em black;
 }
+#header {
+    -moz-border-radius: 0.6em 0.6em 0 0;
+}
+#footer {
+    -moz-border-radius: 0 0 0.6em 0.6em;
+}
+
 #header :link, #header :visited {
     color: white;
 }
-#mainwrap {
-    float: left;
-    width: 75%;
+#header h1 {
+    letter-spacing: 0.2em;
+}
+#header h1 small {
+    margin-left: 0.4em;
+    font-size: 0.55em;
+}
+
+@media (min-width: 40em) {
+    #mainwrap {
+	float: left;
+	width: 75%;
+    }
+    #sidebarwrap {
+	float: right;
+	width: 25%;
+    }
 }
 
 #main {
@@ -31,14 +58,16 @@ html, body {
     min-height: 10em;
 }
 
-#sidebarwrap {
-    float: right;
-    width: 25%;
-}
-#sidebar {
-    margin: 1em 0.6em;
+.sidebar {
+    background: #ccffcc;
+    background: -moz-linear-gradient(-85deg, #70e050, white);
+    padding: 0.8em;
+    margin: 0.4em 0.2em 1.4em;
     font-family: sans-serif;
     font-size: 80%;
+    -moz-border-radius: 0.8em;
+    text-shadow: 1px 1px 0.5px rgba(255,255,255,0.5);
+    overflow: hidden;
 }
 
 #foowrap {
@@ -53,19 +82,22 @@ html, body {
     text-decoration: underline;
 }
 
-.image {
-    float: right;
-    clear: right;
-    margin: 0 0.5em 0.5em 0.5em;
+@media (min-width: 300px) {
+    .image {
+	float: right;
+	clear: right;
+	margin: 0 0.5em 0.5em 0.5em;
+    }
+    .image .caption {
+	max-width: 226px; // corresponds actual image width
+    }
+    .postInIndex .image .caption {
+	max-width: 186px; // corresponds actual image width
+    }
 }
+
 .image .caption {
     font-size: 80%;
-}
-.image .caption {
-    max-width: 226px; // corresponds actual image width
-}
-.postInIndex .image .caption {
-    max-width: 186px; // corresponds actual image width
 }
 
 img {
