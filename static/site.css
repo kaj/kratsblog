@@ -8,11 +8,15 @@ html, body {
     margin: 1em auto 2em;
     max-width: 60em;
     background: white;
+    border-radius: 0.7em;
     -moz-border-radius: 0.7em;
+    -webkit-border-radius: 0.7em;
     /* border: solid 1px black; */
 }
 @media (min-width: 63em) {
     #wrapper {
+	box-shadow: 0 0.4em 1em #404040;
+	-webkit-box-shadow: 0 0.4em 1em #404040;
 	-moz-box-shadow: 0 0.4em 1em #404040;
     }
 }
@@ -20,15 +24,20 @@ html, body {
 #header, #footer {
     background: #70e050;
     background: -moz-linear-gradient(-88deg, rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0)), -moz-linear-gradient(-30deg, #70e050, #60b040, white, #e05090);
+    background: -webkit-gradient(linear, left top, right bottom, from(#70e050), to(#e05090), color-stop(0.3, #60b040), color-stop(0.7, #fff));
     padding: 1ex;
     color: white;
     text-shadow: 0.15em 0.05em 0.3em black;
 }
 #header {
+    border-radius: 0.6em 0.6em 0 0;
     -moz-border-radius: 0.6em 0.6em 0 0;
+    -webkit-border-radius: 0.6em 0.6em 0 0;
 }
 #footer {
+    border-radius: 0 0 0.6em 0.6em;
     -moz-border-radius: 0 0 0.6em 0.6em;
+    -webkit-border-radius: 0 0 0.6em 0.6em;
 }
 
 #header :link, #header :visited {
@@ -61,11 +70,14 @@ html, body {
 .sidebar {
     background: #ccffcc;
     background: -moz-linear-gradient(-85deg, #70e050, white);
+    background: -webkit-gradient(linear, left top, 50% 80%, from(#70e050), to(white));
     padding: 0.8em;
     margin: 0.4em 0.2em 1.4em;
     font-family: sans-serif;
     font-size: 80%;
+    border-radius: 0.8em;
     -moz-border-radius: 0.8em;
+    -webkit-border-radius: 0.8em;
     text-shadow: 1px 1px 0.5px rgba(255,255,255,0.5);
     overflow: hidden;
 }
@@ -104,11 +116,15 @@ img {
     border: none;
 }
 .image img {
+    box-shadow: 0.1em 0.18em 0.8em #444;
     -moz-box-shadow: 0.1em 0.18em 0.8em #444;
+    -webkit-box-shadow: 0.1em 0.18em 0.8em #444;
     padding: 0.2em;
 }
 .image img:hover {
+    box-shadow: 0.1em 0.18em 0.8em black;
     -moz-box-shadow: 0.1em 0.18em 0.8em black;
+    -webkit-box-shadow: 0.1em 0.18em 0.8em black;
 }
 
 h2 {
