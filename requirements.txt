@@ -1,3 +1,4 @@
 django-autoslug==1.4.1
+django-compressor==0.5.3
 sorl-thumbnail==3.2.5
 South==0.7.2

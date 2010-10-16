@@ -100,7 +100,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'sorl.thumbnail',
     'south',
-
+    'compressor',
+    
     'blog',
     'image',
 )
