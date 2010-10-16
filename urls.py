@@ -30,6 +30,8 @@ urlpatterns = patterns(
     (r'^(?P<url>(atom|rss)).xml$', 'django.contrib.syndication.views.feed',
      {'feed_dict': feeds}
      ),
+    url('robots.txt', direct_to_template, 
+        {'template': 'robots.txt', 'mimetype': 'text/plain'}),
 )
 
 if settings.DEBUG and settings.MEDIA_URL[0] == '/':
