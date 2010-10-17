@@ -5,8 +5,8 @@ from blog.models import Post
 class Image(models.Model):
     image = models.ImageField(upload_to='%Y/img')
     caption = models.TextField()
-    post = models.ForeignKey(Post)
-    order = models.IntegerField(blank=True)
+    post = models.ForeignKey(Post, db_index=True)
+    order = models.IntegerField(blank=True, db_index=True)
     
     class Meta:
         ordering = ['order']
