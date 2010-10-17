@@ -5,19 +5,28 @@ html, body {
 }
 
 #wrapper {
-    margin: 1em auto 2em;
+    margin: 0 auto 2em;
+    width: 95%;
     max-width: 60em;
     background: white;
     border-radius: 0.7em;
     -moz-border-radius: 0.7em;
     -webkit-border-radius: 0.7em;
-    /* border: solid 1px black; */
+    box-shadow: 0 0.4em 1em #404040;
+    -webkit-box-shadow: 0 0.4em 1em #404040;
+    -moz-box-shadow: 0 0.4em 1em #404040;
+    position: relative;
+    top: 1em;
+    z-index: 2;
+    behavior: url(/PIE.htc);
 }
-@media (min-width: 63em) {
+@media (max-width: 63em) {
     #wrapper {
-	box-shadow: 0 0.4em 1em #404040;
-	-webkit-box-shadow: 0 0.4em 1em #404040;
-	-moz-box-shadow: 0 0.4em 1em #404040;
+	margin: 0 auto 0;
+	width: 100%;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
     }
 }
 
@@ -25,9 +34,13 @@ html, body {
     background: #70e050;
     background: -moz-linear-gradient(-88deg, rgba(255,255,255,0), rgba(255,255,255,0), rgba(255,255,255,0.3), rgba(255,255,255,0)), -moz-linear-gradient(-30deg, #70e050, #60b040, white, #e05090);
     background: -webkit-gradient(linear, left top, right bottom, from(#70e050), to(#e05090), color-stop(0.3, #60b040), color-stop(0.7, #fff));
+    -pie-background: linear-gradient(-30deg, #70e050, #60b040, white, #e05090);
     padding: 1ex;
     color: white;
     text-shadow: 0.15em 0.05em 0.3em black;
+    position: relative;
+    z-index: 2;
+    behavior: url(/PIE.htc);
 }
 #header {
     border-radius: 0.6em 0.6em 0 0;
@@ -38,6 +51,7 @@ html, body {
     border-radius: 0 0 0.6em 0.6em;
     -moz-border-radius: 0 0 0.6em 0.6em;
     -webkit-border-radius: 0 0 0.6em 0.6em;
+    letter-spacing: 0.05em;
 }
 
 #header :link, #header :visited {
@@ -58,6 +72,7 @@ html, body {
 #sidebarwrap {
     float: right;
     width: 28.5%;
+    padding: 0.2em 0 0 0;
 }
 
 @media (max-width: 40em) {
@@ -80,7 +95,9 @@ html, body {
 .sidebar {
     background: #ccffcc;
     background: -moz-linear-gradient(-85deg, #70e050, white);
-    background: -webkit-gradient(linear, left top, 50% 80%, from(#70e050), to(white));
+    background: -webkit-gradient(linear, 0 0, 10% 95%, from(#70e050), to(white));
+    -pie-background: linear-gradient(-85deg, #70e050, white);
+    color: black;
     padding: 0.8em;
     margin: 0.4em 0.3em 1.4em;
     font-family: sans-serif;
@@ -90,8 +107,12 @@ html, body {
     -webkit-border-radius: 0.8em;
     text-shadow: 1px 1px 0.5px rgba(255,255,255,0.5);
     overflow: hidden;
+    position: relative;
+    behavior: url(/PIE.htc);
 }
-
+.sidebar h2 {
+    color: #222;
+}
 #foowrap {
     overflow: hidden;
 }
@@ -130,18 +151,31 @@ html, body {
 
 .image .caption {
     font-size: 80%;
+    margin-top: 0.4em;
 }
 
 img {
     border: none;
 }
-.image img {
-    box-shadow: 0.1em 0.18em 0.8em #444;
-    -moz-box-shadow: 0.1em 0.18em 0.8em #444;
-    -webkit-box-shadow: 0.1em 0.18em 0.8em #444;
-    padding: 0.2em;
+.image a img {
+    display: block;
+    margin: 0;
+    padding: 0;
 }
-.image img:hover {
+
+.image a {
+    display: block;
+    display: inline-block;
+    box-shadow: #888 0.1em 0.18em 0.8em;
+    -moz-box-shadow: #888 0.1em 0.18em 0.8em;
+    -webkit-box-shadow: #888 0.1em 0.18em 0.8em;
+    background: white;
+    padding: 0.2em;
+    position: relative;
+    z-index: 17;
+    behavior: url(/PIE.htc);
+}
+.image a:hover {
     box-shadow: 0.1em 0.18em 0.8em black;
     -moz-box-shadow: 0.1em 0.18em 0.8em black;
     -webkit-box-shadow: 0.1em 0.18em 0.8em black;

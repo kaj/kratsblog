@@ -32,6 +32,8 @@ urlpatterns = patterns(
      ),
     url('robots.txt', direct_to_template, 
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
+    url('PIE.htc', direct_to_template, 
+        {'template': 'PIE.htc', 'mimetype': 'text/x-component'}),
 )
 
 if settings.DEBUG and settings.MEDIA_URL[0] == '/':
