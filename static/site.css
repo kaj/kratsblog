@@ -51,14 +51,24 @@ html, body {
     font-size: 0.55em;
 }
 
-@media (min-width: 40em) {
+#mainwrap {
+    float: left;
+    width: 71.4%;
+}
+#sidebarwrap {
+    float: right;
+    width: 28.5%;
+}
+
+@media (max-width: 40em) {
     #mainwrap {
-	float: left;
-	width: 71.4%;
+	float: none;
+	width: 100%;
     }
     #sidebarwrap {
-	float: right;
-	width: 28.5%;
+	clear: both;
+	float: none;
+	width: auto;
     }
 }
 
@@ -94,17 +104,27 @@ html, body {
     text-decoration: underline;
 }
 
-@media (min-width: 300px) {
+.image {
+    float: right;
+    clear: right;
+    margin: 0 0.5em 0.5em 0.5em;
+}
+.image .caption {
+    max-width: 226px; // corresponds actual image width
+}
+.postInIndex .image .caption {
+    max-width: 186px; // corresponds actual image width
+}
+
+@media (max-width: 380px) {
     .image {
-	float: right;
-	clear: right;
-	margin: 0 0.5em 0.5em 0.5em;
+	float: none;
     }
     .image .caption {
-	max-width: 226px; // corresponds actual image width
+	max-width: none;
     }
     .postInIndex .image .caption {
-	max-width: 186px; // corresponds actual image width
+	max-width: none;
     }
 }
 
