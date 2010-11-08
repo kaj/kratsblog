@@ -21,18 +21,17 @@ urlpatterns = patterns(
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
 
-    url('^$', blog.index),
-    url('^(?P<year>[0-9]{4})/$', blog.index),
-    url('^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', blog.index),
-    url('^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z0-9-]+)',
+    url(r'^$', blog.index),
+    url(r'^(?P<year>[0-9]{4})/$', blog.index),
+    url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/$', blog.index),
+    url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z0-9-]+)',
         blog.post_detail),
-    url('^node/(?P<id>[0-9]+)', blog.redirect_from_id),
-    (r'^(?P<url>(atom|rss)).xml$', 'django.contrib.syndication.views.feed',
-     {'feed_dict': feeds}
-     ),
-    url('^robots.txt$', direct_to_template, 
+    url(r'^node/(?P<id>[0-9]+)', blog.redirect_from_id),
+    url(r'^(?P<url>(atom|rss))\.xml$', 'django.contrib.syndication.views.feed',
+        {'feed_dict': feeds}),
+    url(r'^robots\.txt$', direct_to_template, 
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
-    url('^PIE.htc$', direct_to_template, 
+    url(r'^PIE\.htc$', direct_to_template, 
         {'template': 'PIE.htc', 'mimetype': 'text/x-component'}),
 )
 
