@@ -30,9 +30,9 @@ urlpatterns = patterns(
     (r'^(?P<url>(atom|rss)).xml$', 'django.contrib.syndication.views.feed',
      {'feed_dict': feeds}
      ),
-    url('robots.txt', direct_to_template, 
+    url('^robots.txt$', direct_to_template, 
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
-    url('PIE.htc', direct_to_template, 
+    url('^PIE.htc$', direct_to_template, 
         {'template': 'PIE.htc', 'mimetype': 'text/x-component'}),
 )
 
