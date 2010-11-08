@@ -12,7 +12,7 @@ class AtomFeed(Feed):
     description = u"Nya %s" % current_site.name
 
     def items(self):
-        return Post.objects.all()[:7]
+        return Post.objects.exclude(posted_time__exact=None)[:7]
 
     def item_pubdate(self, obj):
         return obj.posted_time
