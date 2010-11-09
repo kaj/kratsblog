@@ -6,6 +6,7 @@ admin.autodiscover()
 
 from blog import views as blog
 from blog import feeds
+from blog.sitemap import sitemaps
 
 feeds = { 'atom' : feeds.AtomFeed, 
           'rss'  : feeds.RssFeed, }
@@ -29,6 +30,8 @@ urlpatterns = patterns(
     url(r'^node/(?P<id>[0-9]+)', blog.redirect_from_id),
     url(r'^(?P<url>(atom|rss))\.xml$', 'django.contrib.syndication.views.feed',
         {'feed_dict': feeds}),
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
+        {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', direct_to_template, 
         {'template': 'robots.txt', 'mimetype': 'text/plain'}),
     url(r'^PIE\.htc$', direct_to_template, 
