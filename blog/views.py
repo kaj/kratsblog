@@ -38,6 +38,6 @@ def post_detail(request, year, month, slug):
             })
 
 def redirect_from_id(request, id):
-    posts = Post.objects.exclude(posted_time__exact=None),
+    posts = Post.objects.exclude(posted_time__exact=None)
     return redirect(get_object_or_404(posts, id=id),
                     permanent=True)
