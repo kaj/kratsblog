@@ -23,7 +23,7 @@ class RootSitemap(Sitemap):
         return '/'
 
     def lastmod(self, obj):
-        Post.objects.aggregate(mod=Max('posted_time'))['mod']
+        return Post.objects.aggregate(mod=Max('posted_time'))['mod']
 
 sitemaps = {
     'root': RootSitemap,
