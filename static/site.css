@@ -75,7 +75,8 @@ html, body {
     padding: 0.2em 0 0 0;
 }
 
-@media (max-width: 40em) {
+@media only screen and (max-width: 40em), 
+       only screen and (max-device-width: 400px) {
     #mainwrap {
 	float: none;
 	width: 100%;
