@@ -4,3 +4,4 @@ django-autoslug==1.4.1
 django-compressor==0.5.3
 python-memcached
 sorl-thumbnail==3.2.5
+textile
