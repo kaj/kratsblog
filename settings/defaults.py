@@ -51,7 +51,7 @@ USE_I18N = True
 USE_L10N = True
 
 import os
-PROJECT_ROOT = os.path.dirname(os.path.realpath(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
