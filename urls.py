@@ -28,7 +28,7 @@ urlpatterns = patterns(
     url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z0-9-]+)',
         blog.post_detail),
     url(r'^node/(?P<id>[0-9]+)', blog.redirect_from_id),
-    url(r'^(?P<url>(atom|rss))\.xml$', 'django.contrib.syndication.views.feed',
+    url(r'^(?P<url>(atom|rss))\.xml$', 'django.contrib.syndication.views.Feed',
         {'feed_dict': feeds}),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': sitemaps}),
