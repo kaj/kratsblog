@@ -10,6 +10,7 @@ class AtomFeed(Feed):
     title = current_site.name
     link = "/"
     description = u"Nya %s" % current_site.name
+    description_template = 'feeds/atom_description.html'
 
     def items(self):
         return Post.objects.exclude(posted_time__exact=None)[:7]
@@ -36,3 +37,4 @@ class AtomFeed(Feed):
 
 class RssFeed(AtomFeed):
     feed_type = Rss201rev2Feed
+    description_template = 'feeds/rss_description.html'

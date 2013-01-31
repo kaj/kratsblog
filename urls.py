@@ -8,9 +8,6 @@ from blog import views as blog
 from blog import feeds
 from blog.sitemap import sitemaps
 
-feeds = { 'atom' : feeds.AtomFeed, 
-          'rss'  : feeds.RssFeed, }
-
 urlpatterns = patterns(
     '',
     # Example:
@@ -28,8 +25,8 @@ urlpatterns = patterns(
     url(r'^(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[a-z0-9-]+)',
         blog.post_detail),
     url(r'^node/(?P<id>[0-9]+)', blog.redirect_from_id),
-    url(r'^(?P<url>(atom|rss))\.xml$', 'django.contrib.syndication.views.Feed',
-        {'feed_dict': feeds}),
+    url(r'^atom\.xml', feeds.AtomFeed()),
+    url(r'^rss.xml', feeds.RssFeed()),
     url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap',
         {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', direct_to_template, 
