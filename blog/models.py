@@ -7,7 +7,10 @@ FMT_HELP = (u'Viss formatering tillåten.  _kursiv_ *fet*, "länktext":url.  ' +
 
 class Post(models.Model):
     
-    title = models.CharField(max_length=200)
+    title = models.CharField(
+        max_length=200,
+        help_text=u'Om titel ändras kommer urlen fortfarande se ut'
+        u' som gamla titeln.')
     content = models.TextField(help_text=FMT_HELP)
     
     posted_time = models.DateTimeField(
