@@ -15,6 +15,8 @@ class ImagesInline(admin.TabularInline):
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'posted_time', 'first_image')
+    search_fields = ('title', 'content')
+    date_hierarchy = 'posted_time'
     inlines = (ImagesInline,)
 
 admin.site.register(Post, PostAdmin)
