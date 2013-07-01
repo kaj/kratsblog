@@ -1,8 +1,8 @@
 Django >= 1.5
 BeautifulSoup
 South==0.7.2
-django-autoslug==1.4.1
-django_compressor==1.1.2
+django-autoslug>=1.7
+django_compressor>=1.3
 python-memcached
 sorl-thumbnail==3.2.5
 textile
