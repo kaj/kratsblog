@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
-from django.views.generic.simple import direct_to_template
-from django.shortcuts import get_object_or_404, get_list_or_404, redirect
+from django.shortcuts import get_object_or_404, get_list_or_404, \
+    redirect, render
 from blog.models import Post
 from django.template import defaultfilters
 from datetime import datetime
@@ -20,7 +20,7 @@ def index(request, year=None, month=None):
         head = None
         posts = Post.objects.exclude(posted_time__exact=None)[:5]
     
-    return direct_to_template(request, 'blog/index.html', {
+    return render(request, 'blog/index.html', {
             'head': head,
             'posts': posts,
             'years': [x.year for x
@@ -32,7 +32,7 @@ def post_detail(request, year, month, slug):
                              posted_time__year=year, posted_time__month=month,
                              slug=slug)
     
-    return direct_to_template(request, 'blog/post_detail.html', {
+    return render(request, 'blog/post_detail.html', {
             'post': post,
             'images': post.image_set.all,
             })
