@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markup thumbnail %}
+{% load thumbnail %}
 
 {% block wholetitle %}{{post.title}} - Tygbittar{% endblock %}
 
@@ -16,10 +16,10 @@
 	  <img src="{{img}}" alt="[bild]"
 	       width="{{img.width}}" height="{{img.height}}"/>
 	</a>
-	<div class="caption">{{image.caption|textile}}</div>
+	<div class="caption">{{image.caption_markup}}</div>
       </div>
     {% endfor %}
   
-    {{post.content|textile}}
+    {{post.content_markup}}
   </div>
 {% endblock %}

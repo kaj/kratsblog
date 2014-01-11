@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import Max
 from blog.models import Post
+from django.utils.safestring import mark_safe
+from textile import textile
 
 class Image(models.Model):
     image = models.ImageField(upload_to='%Y/img')
@@ -20,3 +22,6 @@ class Image(models.Model):
             self.order = \
                 (others.aggregate(Max('order'))['order__max'] or 0) + 10
         super(Image, self).save(*args, **kwargs)
+
+    def caption_markup(self):
+        return mark_safe(textile(self.caption))

@@ -1,4 +1,3 @@
-{% load markup %}
 {% load thumbnail %}
 <div xmlns="http://www.w3.org/1999/xhtml">
   {% if obj.first_image %}
@@ -11,11 +10,11 @@
 	  <img src="http://{{site.domain}}{{img}}" alt="[bild]"
 	       width="{{img.width}}" height="{{img.height}}"/>
 	</a>
-	<div class="caption">{{image.caption|textile}}</div>
+	<div class="caption">{{image.caption_markup}}</div>
       </div>
     {% endwith %}
   {% endif %}
   <div class="postContent">
-    {{obj.linkedshort|textile}}
+    {{obj.linkedshort}}
   </div>
 </div>

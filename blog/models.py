@@ -1,6 +1,8 @@
 # -*- encoding: utf-8; -*-
 from autoslug.fields import AutoSlugField
 from django.db import models
+from django.utils.safestring import mark_safe
+from textile import textile
 
 FMT_HELP = (u'Viss formatering tillåten.  _kursiv_ *fet*, "länktext":url.  ' +
             u'Tomrad för styckesbrytning.')
@@ -30,22 +32,26 @@ class Post(models.Model):
                                 self.slug)
     def linkedshort(self, maxlen=600):
         if len(self.content) < maxlen:
-            return self.content
+            return mark_safe(textile(self.content))
         
         paras = self.content.split('\r\n\r\n')
         lens = [len(p) for p in paras]
 
         def result(paras):
-            return u'%s ...\n\n"Läs mer":%s' % ('\n\n'.join(paras),
-                                               self.get_absolute_url())
-        
+            return mark_safe(textile(
+                u'%s ...\n\n"Läs mer":%s' % ('\n\n'.join(paras),
+                                             self.get_absolute_url())))
+
         for n in range(1,len(paras)):
             if n > 1 and sum(lens[:n]) > maxlen:
                 return result(paras[:n-1])
             if sum(lens[:n]) > maxlen/2:
                 return result(paras[:n])
         
-        return self.content
+        return mark_safe(textile(self.content))
+
+    def content_markup(self):
+        return mark_safe(textile(self.content))
 
     @property
     def first_image(self):

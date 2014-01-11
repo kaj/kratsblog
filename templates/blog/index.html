@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load markup thumbnail %}
+{% load thumbnail %}
 
 {% block wholetitle %}Tygbittar{% endblock %}
 
@@ -20,13 +20,13 @@
 	  <img src="{{img}}" alt="[bild]"
 	       width="{{img.width}}" height="{{img.height}}"/>
 	</a>
-	<div class="caption">{{image.caption|textile}}</div>
+	<div class="caption">{{image.caption_markup}}</div>
       </div>
     {% endwith %}
   {% endif %}
   <p class="dateline">{{post.posted_time}}</p>
   <div class="postContent">
-    {{post.linkedshort|textile}}
+    {{post.linkedshort}}
   </div>
 </div>
 {% empty %}
