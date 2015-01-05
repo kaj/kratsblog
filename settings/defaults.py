@@ -91,7 +91,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_ROOT, 'templates')
+    os.path.join(PROJECT_ROOT, 'templates'),
 )
 
 STATIC_URL = '/static/'
@@ -116,7 +116,6 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'sorl.thumbnail',
-    'south',
     'compressor',
     
     'blog',
@@ -128,3 +127,5 @@ COMPRESS_CSS_FILTERS = (
     'compressor.filters.cssmin.CSSMinFilter',
 )
 COMPRESS_STORAGE = 'compressor.storage.GzipCompressorFileStorage'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'

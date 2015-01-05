@@ -1,39 +1,28 @@
-# encoding: utf-8
-import datetime
-from south.db import db
-from south.v2 import SchemaMigration
-from django.db import models
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
-class Migration(SchemaMigration):
-
-    def forwards(self, orm):
-        
-        # Adding model 'Post'
-        db.create_table('blog_post', (
-            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('title', self.gf('django.db.models.fields.CharField')(max_length=200)),
-            ('content', self.gf('django.db.models.fields.TextField')()),
-            ('posted_time', self.gf('django.db.models.fields.DateTimeField')()),
-            ('slug', self.gf('autoslug.fields.AutoSlugField')(unique_with=(), max_length=50, populate_from=None, db_index=True)),
-        ))
-        db.send_create_signal('blog', ['Post'])
+from django.db import models, migrations
+import autoslug.fields
 
 
-    def backwards(self, orm):
-        
-        # Deleting model 'Post'
-        db.delete_table('blog_post')
+class Migration(migrations.Migration):
 
+    dependencies = [
+    ]
 
-    models = {
-        'blog.post': {
-            'Meta': {'ordering': "['-posted_time']", 'object_name': 'Post'},
-            'content': ('django.db.models.fields.TextField', [], {}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'posted_time': ('django.db.models.fields.DateTimeField', [], {}),
-            'slug': ('autoslug.fields.AutoSlugField', [], {'unique_with': '()', 'max_length': '50', 'populate_from': 'None', 'db_index': 'True'}),
-            'title': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        }
-    }
-
-    complete_apps = ['blog']
+    operations = [
+        migrations.CreateModel(
+            name='Post',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(help_text='Om titel \xe4ndras kommer urlen fortfarande se ut som gamla titeln.', max_length=200)),
+                ('content', models.TextField(help_text='Viss formatering till\xe5ten.  _kursiv_ *fet*, "l\xe4nktext":url.  Tomrad f\xf6r styckesbrytning.')),
+                ('posted_time', models.DateTimeField(help_text='L\xe4mna tomt f\xf6r att l\xe4mna posten opublicerad.', null=True, db_index=True, blank=True)),
+                ('slug', autoslug.fields.AutoSlugField(editable=False)),
+            ],
+            options={
+                'ordering': ['-posted_time'],
+            },
+            bases=(models.Model,),
+        ),
+    ]
