@@ -1,7 +1,7 @@
 Kratsbox
 ========
 
-A simple lightbox-like jQuery plugin focusing on usability.
+A simple javascript lightbox focusing on usability.
 What makes kratsbox different from other lightboxes is:
 
 * _Keyboard focus_.  The close, next and prev actions get visible
@@ -17,11 +17,10 @@ What makes kratsbox different from other lightboxes is:
 Usage
 -----
 
-First, put the kratsbox file in some path on your web server and make
-sure you have them (and jQuery) availiable in the page:
+First, put the kratsbox files in some path on your web server and make
+sure you have them availiable in the page:
 
     <link rel="stylesheet" type="text/css" href="/somepath/kratsbox.css"/>
-    <script type="text/javascript" src="/somepath/jquery.js"></script>
     <script type="text/javascript" src="/somepath/kratsbox.js"></script>
 
 You can (and should) combine and minify them with your other javascript and
@@ -29,28 +28,53 @@ css files to minimize impact on page load time.
 If you prefer a white box over a gray, you can use _kratsbox.light.css_
 instead of _kratsbox.css_.
 
-Basic usage is just to jQuery-select the links you want to use the box
-on and call kratsbox, like so:
+Basic usage is just call kratsbox, with a querySelector string as an
+argument, like so:
 
-    $('a.image').kratsbox();
+    kratsbox('a.image');
 
 As usual, you need to execute that after the links actually exist.
 You also might want to set some options, e.g. for localization.
   
-    $(function() {
-      $('a.image').kratsbox({
+    kratsbox('a.image', {
         'next': 'nästa \u2192',
         'prev': 'förra \u2190',
         'close': 'stäng \u00D7'
-      });
     });
 
 This assumes you have image links.  I usually do something like:
 
-    <a class="image" href="large-image.jpg"><img src="small-image.jpg"></a>
+    <a class="image" href="large-image.jpg"
+       title="Wild rose beside a road in Stockholm. Cc-by Rasmus Kaj">
+     <img src="small-image.jpg" width="200" height="133"
+          alt="Image: A flower">
+    </a>
 
-This makes the small image visible directly in the page, and clicknig it
+This makes the small image visible directly in the page, and clicking it
 brings up a box displaying the large image.
+The title attribute from the link describes what is linked to and is
+used as a caption when showing the large image.
+Img alts saying it's an image is sometimes frowned upon, but I tink it
+is good when considered it is the link text for the larger version of
+the image.
+
+Kratsbox also supports the figure / figcaption elements, where
+figcaption may contain markup.  Depending on your stylesheet, the
+figcaption may be visible for the small image as well as in the box
+with the large image.
+
+    <figure>
+      <a href="large-image.jpg">
+        <img src="small-image.jpg" width="200" height="133"
+             alt="Image: A flower">
+      </a>
+      <figcaption>
+        Wild rose beside a road in Stockholm.
+        Cc-by <a href="http://rasmus.krats.se/">Rasmus Kaj</a>.
+      </figcaption>
+    </figure>
+
+    kratsbox('figure > a')
 
 Options
 -------
