@@ -1,6 +1,5 @@
 Django >= 1.7.2
 BeautifulSoup >= 3.2
-South==0.7.2
 django-autoslug >= 1.7
 django-compressor >= 1.4
 python-memcached >= 1.53
