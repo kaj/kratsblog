@@ -1,8 +1,8 @@
-Django >= 1.7.2
+Django >= 1.9
 BeautifulSoup >= 3.2
 django-autoslug >= 1.7
 django-compressor >= 1.4
-python-memcached >= 1.53
+python-memcached == 1.54
 sorl-thumbnail >= 12.2
 textile >= 2.2
 
