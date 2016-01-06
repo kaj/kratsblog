@@ -1,8 +1,14 @@
-# Django settings for kratsblog project.
+# Django settings for kratsblog project.          -*- encoding: utf-8 -*-
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+SITE = {
+    'sitehead': 'Tygbittar<small>.krats.se</small>',
+    'sitename': 'Tygbittar',
+    'byline': 'Tygbittar skrivs av Katarina Kaj.',
+    'hfrom': u'Tygbittar från %s',
+}
 ADMINS = (
     ('Rasmus Kaj', 'kaj@kth.se'),
 )
@@ -40,7 +46,8 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz',
-                'django.contrib.messages.context_processors.messages'
+                'django.contrib.messages.context_processors.messages',
+                'blog.views.site_context'
             ],
         },
     },

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 
-{% block wholetitle %}Tygbittar{% endblock %}
+{% block wholetitle %}{{head|default:sitename}}{% endblock %}
 
 {% block main %}
 {% if head %}
