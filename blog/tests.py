@@ -13,10 +13,11 @@ class SimpleTest(TestCase):
     def setUp(self):
         self.c = Client()
     
-    def get(self, url, expected_status_code=200, expected_location=''):
+    def get(self, url, expected_status_code=200, expected_location='',
+            expected_contenttype='text/html; charset=utf-8'):
         response = self.c.get(url)
         self.assertEqual((expected_status_code, expected_location, 
-                          'text/html; charset=utf-8'),
+                          expected_contenttype),
                          (response.status_code,
                           response.get('Location', '') \
                               .replace('http://testserver', ''),
@@ -41,3 +42,7 @@ class SimpleTest(TestCase):
         
     def test_get_frontpage(self):
         doc = self.get('/')
+
+    def test_get_feed(self):
+        feed = self.get('/atom.xml',
+                        expected_contenttype='application/atom+xml; charset=utf-8')
