@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 from django.contrib.syndication.views import Feed
+from django.conf import settings
 from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 from blog.models import Post
-from django.contrib.sites.models import Site
 
 class AtomFeed(Feed):
     feed_type = Atom1Feed
-    current_site = Site.objects.get_current()
-    title = current_site.name
+    title = settings.SITE.get('sitename')
     link = "/"
-    description = u"Nya %s" % current_site.name
+    description = u"Nya %s" % title
     description_template = 'feeds/atom_description.html'
 
     def items(self):
