@@ -5,9 +5,7 @@ python-memcached
 sorl-thumbnail >= 12.2
 textile >= 2.2
 psycopg2
-
-# Test
-sqlite3
+Pillow
 
 # Production envirionment
 gunicorn
