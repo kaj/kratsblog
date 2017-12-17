@@ -38,18 +38,19 @@ class SimpleTest(TestCase):
         
     def test_get_frontpage(self):
         doc = self.get('/')
-        self.assertEquals(['Tygbittar.krats.se'], find_text(doc, 'h1'))
-        self.assertEquals(['Hello World'], find_text(doc, '#main h2'))
+        self.assertEqual(['Tygbittar.krats.se'], find_text(doc, 'h1'))
+        self.assertEqual(['Hello World'], find_text(doc, '#main h2'))
         link, = doc.cssselect('#main h2 a')
-        self.assertEquals('/2017/12/hello-world', link.get('href'))
+        self.assertEqual('/2017/12/hello-world', link.get('href'))
 
     def test_get_article(self):
         doc = self.get('/2017/12/hello-world')
-        self.assertEquals(['Hello World'], find_text(doc, '#main h2'))
-        self.assertEquals(['17 december 2017 23:45'], find_text(doc, '#main p.dateline'))
-        self.assertEquals(['Hello there, this is a test article',
-                           'Containing two paragraphs of text.'],
-                          find_text(doc, '#main .postContent p'))
+        self.assertEqual(['Hello World'], find_text(doc, '#main h2'))
+        self.assertEqual(['17 december 2017 23:45'],
+                         find_text(doc, '#main p.dateline'))
+        self.assertEqual(['Hello there, this is a test article',
+                          'Containing two paragraphs of text.'],
+                         find_text(doc, '#main .postContent p'))
 
     def test_get_feed(self):
         feed = self.get('/atom.xml',
