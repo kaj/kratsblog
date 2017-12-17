@@ -1,4 +1,4 @@
-Django >= 1.9
+Django >= 1.9, < 1.10
 django-autoslug >= 1.7
 django-compressor >= 1.4
 python-memcached
