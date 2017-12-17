@@ -7,7 +7,7 @@ from textile import textile
 class Image(models.Model):
     image = models.ImageField(upload_to='%Y/img')
     caption = models.TextField()
-    post = models.ForeignKey(Post, db_index=True)
+    post = models.ForeignKey(Post, db_index=True, on_delete=models.CASCADE)
     order = models.IntegerField(blank=True, db_index=True)
     
     class Meta:

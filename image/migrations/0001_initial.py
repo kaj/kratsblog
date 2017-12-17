@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
                 ('image', models.ImageField(upload_to=b'%Y/img')),
                 ('caption', models.TextField()),
                 ('order', models.IntegerField(db_index=True, blank=True)),
-                ('post', models.ForeignKey(to='blog.Post')),
+                ('post', models.ForeignKey(to='blog.Post', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['order'],
