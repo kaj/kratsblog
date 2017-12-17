@@ -11,7 +11,7 @@ from blog import feeds
 from blog.sitemap import sitemaps
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
 
     url(r'^$', blog.index),
     url(r'^(?P<year>[0-9]{4})/$', blog.index),
