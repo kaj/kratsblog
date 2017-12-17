@@ -10,3 +10,7 @@ Pillow
 # Production envirionment
 gunicorn
 setproctitle
+
+# For testing
+lxml
+cssselect
