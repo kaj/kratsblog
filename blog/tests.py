@@ -1,9 +1,6 @@
 # -*- encoding: utf-8 -*-
 """
-This file demonstrates two different styles of tests (one doctest and one
-unittest). These will both pass when you run "manage.py test".
-
-Replace these with more appropriate tests for your application.
+Create some simple content and test browsing the site.
 """
 
 from django.test import TestCase
@@ -14,11 +11,25 @@ from lxml import html
 class SimpleTest(TestCase):
     
     def setUp(self):
+        # Create three posts with same title, two in same month, to see
+        # the slug generation works as it should.
+        Post.objects.create(
+            title='Hello World',
+            content='Hello there, this is a test article\n\n' +
+            'Containing two paragraphs of text.',
+            posted_time=datetime(2017, 11, 27, 14, 15, 0)
+        )
         Post.objects.create(
             title='Hello World',
             content='Hello there, this is a test article\n\n' +
             'Containing two paragraphs of text.',
             posted_time=datetime(2017, 12, 17, 23, 45, 0)
+        )
+        Post.objects.create(
+            title='Hello World',
+            content='Hello there, this is a second test article\n\n' +
+            'It is newer, so it will be displayed first..',
+            posted_time=datetime(2017, 12, 18, 7, 30, 0)
         )
     
     def get(self, url, expected_status_code=200, expected_location='',
@@ -39,9 +50,12 @@ class SimpleTest(TestCase):
     def test_get_frontpage(self):
         doc = self.get('/')
         self.assertEqual(['Tygbittar.krats.se'], find_text(doc, 'h1'))
-        self.assertEqual(['Hello World'], find_text(doc, '#main h2'))
-        link, = doc.cssselect('#main h2 a')
-        self.assertEqual('/2017/12/hello-world', link.get('href'))
+        self.assertEqual(['Hello World', 'Hello World', 'Hello World'],
+                         find_text(doc, '#main h2'))
+        self.assertEqual(['/2017/12/hello-world-2',
+                          '/2017/12/hello-world',
+                          '/2017/11/hello-world'],
+                         [l.get('href') for l in doc.cssselect('#main h2 a')])
 
     def test_get_article(self):
         doc = self.get('/2017/12/hello-world')
