@@ -2,6 +2,7 @@ html, body {
     background: #a0a0a0;
     margin: 0;
     padding: 0;
+    line-height: 1.4;
 }
 
 #wrapper {
@@ -114,10 +115,12 @@ html, body {
     margin: 0 0.5em 0.5em 0.5em;
 }
 .image .caption {
-    max-width: 226px; // corresponds actual image width
+    max-width: 226px;
+    max-width: calc(220px + 0.5em); /* corresponds actual image width */
 }
 .postInIndex .image .caption {
-    max-width: 186px; // corresponds actual image width
+    max-width: 186px;
+    max-width: calc(180px + 0.5em); /* corresponds actual image width */
 }
 
 @media (max-width: 380px) {
@@ -177,6 +180,21 @@ dl dd {
     margin: 0 0 0.4em 1.6em;
 }
 
+table {
+    margin: 1em 0;
+    border-collapse: collapse;
+    border: solid 2px #6a6;
+}
+thead {
+    border-bottom: solid 2px #6a6;
+}
+thead, tr:nth-child(2n) {
+    background: #efe;
+}
+th, td {
+    padding: .1em .5em;
+    border: solid 1px #aca;
+}
 .postInIndex {
     margin-bottom: 2em;
 }
