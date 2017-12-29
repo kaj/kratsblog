@@ -77,7 +77,7 @@ html, body {
 }
 
 #main {
-    margin: 1em 0.6em;
+    margin: 1em .6em 2em;
     min-height: 10em;
 }
 
