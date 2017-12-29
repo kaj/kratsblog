@@ -1,78 +1,61 @@
 html, body {
-    background: #a0a0a0;
+    background: #aaa;
     margin: 0;
     padding: 0;
     line-height: 1.4;
 }
-
 #wrapper {
-    margin: 0 auto 2em;
-    width: 95%;
-    max-width: 60em;
     background: white;
-    border-radius: 0.7em;
-    box-shadow: 0 0.4em 1em #404040;
-    position: relative;
-    top: 1em;
-    z-index: 2;
 }
-@media (max-width: 63em) {
+
+@media (min-width: 61em) {
     #wrapper {
-	margin: 0 auto 0;
-	width: 100%;
-	box-shadow: none;
+	background: white;
+	border-radius: .7em;
+	box-shadow: 0 .4em 1em #444;
+	margin: 0 auto 2em;
+	max-width: 61em;
+	overflow: hidden;
+	position: relative;
+	top: 1em;
+	z-index: 2;
     }
 }
 
 #header, #footer {
     background: #70e050;
-    background: linear-gradient(178deg, #70e050, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0)), linear-gradient(172deg, #70e050, #60b040, white, #e05090);
+    background: linear-gradient(178deg, #70e050, rgba(255,255,255,0), rgba(255,255,255,.5), rgba(255,255,255,0)), linear-gradient(172deg, #70e050, #60b040, white, #e05090);
     padding: 1ex;
     color: white;
-    text-shadow: 0.15em 0.05em 0.3em black;
+    text-shadow: .15em .05em .3em black;
     position: relative;
     z-index: 2;
 }
-#header {
-    border-radius: 0.6em 0.6em 0 0;
-}
 #footer {
-    border-radius: 0 0 0.6em 0.6em;
-    letter-spacing: 0.05em;
+    letter-spacing: .05em;
 }
 
 #header :link, #header :visited {
     color: white;
 }
 #header h1 {
-    letter-spacing: 0.2em;
+    letter-spacing: .2em;
 }
 #header h1 small {
     display: inline-block;
-    font-size: 0.55em;
-    margin-left: 0.4em;
+    font-size: .55em;
+    margin-left: .4em;
 }
 
-#mainwrap {
-    float: left;
-    width: 71.4%;
-}
-#sidebarwrap {
-    float: right;
-    width: 28.5%;
-    padding: 0.2em 0 0 0;
-}
-
-@media only screen and (max-width: 40em), 
-       only screen and (max-device-width: 400px) {
+@media (min-width: 40em) {
     #mainwrap {
-	float: none;
-	width: 100%;
+	float: left;
+	width: 71.4%;
     }
     #sidebarwrap {
-	clear: both;
-	float: none;
-	width: auto;
+	float: right;
+	width: 28.5%;
+	padding: .2em 0 0 0;
     }
 }
 
@@ -85,12 +68,12 @@ html, body {
     background: #ccffcc;
     background: linear-gradient(175deg, #70e050, white);
     color: black;
-    padding: 0.8em;
-    margin: 0.4em 0.3em 1.4em;
+    padding: .8em;
+    margin: .4em .3em 1.4em;
     font-family: sans-serif;
     font-size: 80%;
-    border-radius: 0.8em;
-    text-shadow: 1px 1px 0.5px rgba(255,255,255,0.5);
+    border-radius: .8em;
+    text-shadow: 1px 1px .5px rgba(255,255,255,.5);
     overflow: hidden;
     position: relative;
 }
@@ -112,15 +95,15 @@ html, body {
 .image {
     float: right;
     clear: right;
-    margin: 0 0.5em 0.5em 0.5em;
+    margin: 0 .5em .5em .5em;
 }
 .image .caption {
     max-width: 226px;
-    max-width: calc(220px + 0.5em); /* corresponds actual image width */
+    max-width: calc(220px + .5em); /* corresponds actual image width */
 }
 .postInIndex .image .caption {
     max-width: 186px;
-    max-width: calc(180px + 0.5em); /* corresponds actual image width */
+    max-width: calc(180px + .5em); /* corresponds actual image width */
 }
 
 @media (max-width: 380px) {
@@ -137,7 +120,7 @@ html, body {
 
 .image .caption {
     font-size: 80%;
-    margin-top: 0.4em;
+    margin-top: .4em;
 }
 
 img {
@@ -152,32 +135,32 @@ img {
 .image a {
     display: block;
     display: inline-block;
-    box-shadow: #888 0.1em 0.18em 0.8em;
+    box-shadow: #888 .1em .18em .8em;
     background: white;
-    padding: 0.2em;
+    padding: .2em;
     position: relative;
     z-index: 17;
 }
 .image a:hover {
-    box-shadow: 0.1em 0.18em 0.8em black;
+    box-shadow: .1em .18em .8em black;
 }
 
 h2 {
-    margin: 0 0 0.2em 0;
+    margin: 0 0 .2em 0;
 }
 p.dateline {
     font-family: sans-serif;
     font-size: 80%;
 }
 p { 
-    margin: 0 0 0.6em 0;
+    margin: 0 0 .6em 0;
 }
 
 dl dt {
-    margin: 0.4em 0 0 0;
+    margin: .4em 0 0 0;
 }
 dl dd {
-    margin: 0 0 0.4em 1.6em;
+    margin: 0 0 .4em 1.6em;
 }
 
 table {
@@ -186,7 +169,7 @@ table {
     border: solid 2px #6a6;
 }
 thead {
-    border-bottom: solid 2px #6a6;
+    border: solid 2px #6a6;
 }
 thead, tr:nth-child(2n) {
     background: #efe;
@@ -200,6 +183,6 @@ th, td {
 }
 .allPostsFooter {
     border-top: solid 1px #70e050;
-    padding-top: 0.5em;
+    padding-top: .5em;
     float: left;
 }
