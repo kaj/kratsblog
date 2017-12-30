@@ -31,9 +31,6 @@ html, body {
     position: relative;
     z-index: 2;
 }
-#footer {
-    letter-spacing: .05em;
-}
 
 #header :link, #header :visited {
     color: white;
@@ -168,11 +165,14 @@ table {
     border-collapse: collapse;
     border: solid 2px #6a6;
 }
-thead {
+thead, tbody {
     border: solid 2px #6a6;
 }
 thead, tr:nth-child(2n) {
     background: #efe;
+}
+th {
+    text-align: left;
 }
 th, td {
     padding: .1em .5em;
