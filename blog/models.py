@@ -4,8 +4,9 @@ from django.db import models
 from django.utils.safestring import mark_safe
 from textile import textile
 
-FMT_HELP = (u'Viss formatering tillåten.  _kursiv_ *fet*, "länktext":url.  ' +
-            u'Tomrad för styckesbrytning.')
+FMT_HELP = ('Formatering enligt Textile.  _kursiv_ *fet*, "länktext":url.  ' +
+            'Tomrad för styckesbrytning.' +
+            '(<a href="https://txstyle.org/">mer info</a>)')
 
 class Post(models.Model):
     
