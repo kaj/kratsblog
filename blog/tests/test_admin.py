@@ -20,6 +20,7 @@ class SimpleTest(TestCase):
             first_name = 'Adam',
             last_name = 'Minutis',
         )
+        self.maxDiff = 20000
     
     def get(self, url, expected_status_code=200, expected_location='',
             expected_contenttype='text/html; charset=utf-8'):
@@ -67,7 +68,7 @@ class SimpleTest(TestCase):
         form['posted_time_0'] = '2018-01-01'
         form['posted_time_1'] = '22:47:32'
         resp = form.submit()
-        self.assertEqual(302, resp.status_code)
+        self.assertEqual((302, b''), (resp.status_code, resp.content))
         m = re.match('/admin/blog/post/([0-9]+)/change/', resp.get('Location'))
         self.assertTrue(m, 'Unexected redirect, got %r' % resp.get('Location'))
         post = Post.objects.get(id=m.group(1))

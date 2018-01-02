@@ -17,6 +17,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'posted_time', 'first_image')
     search_fields = ('title', 'content')
     date_hierarchy = 'posted_time'
+    exclude = ('slug',)
     inlines = (ImagesInline,)
 
 admin.site.register(Post, PostAdmin)
