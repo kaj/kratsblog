@@ -13,8 +13,8 @@ class Image(models.Model):
     class Meta:
         ordering = ['order']
     
-    def __unicode__(self):
-        return u'%s' % self.image
+    def __str__(self):
+        return u'%s %r' % (self.image, self.caption)
     
     def save(self, *args, **kwargs):
         if not self.order:

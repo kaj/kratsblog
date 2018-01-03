@@ -44,7 +44,7 @@ class Post(models.Model):
                      posted_time__month=self.posted_time.month)
         return q.count()
 
-    def __unicode__(self):
+    def __str__(self):
         return u'%s (%s)' % (self.title, self.posted_time)
 
     def get_absolute_url(self):
