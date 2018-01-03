@@ -108,6 +108,23 @@ class SimpleTest(TestCase):
         resp = form.submit()
         self.assertRedirectToEdit(resp, 'Exempel', '/2018/02/exempel-2')
 
+    def test_complicated_slug(self):
+        self.assertTrue(self.client.login(username=self.user.username,
+                                          password='foo17bar'))
+        doc = self.get('/admin/blog/post/add/')
+        self.assertEqual(['Django-administration', 'Lägg till post'],
+                         find_text(doc, 'h1'))
+        form = HtmlForm(self.client, doc.cssselect('form'))
+        form.referer = '/admin/blog/post/add/'
+        form['title'] = 'Slånbärslikör (gott)'
+        form['content'] = 'Ett litet exempel.\n\nI två stycken.'
+        form['posted_time_0'] = '2018-01-01'
+        form['posted_time_1'] = '22:47:32'
+        resp = form.submit()
+        self.assertRedirectToEdit(resp,
+                                  'Slånbärslikör (gott)',
+                                  '/2018/01/slanbarslikor-gott')
+
     def assertRedirectToEdit(self, resp, post_title, post_url):
         self.assertEqual(302, resp.status_code)
         m = re.match('/admin/blog/post/([0-9]+)/change/', resp.get('Location'))
