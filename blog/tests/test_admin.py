@@ -55,6 +55,23 @@ class SimpleTest(TestCase):
         form['content'] = 'Ett litet exempel.\n\nI två stycken.'
         resp = form.submit()
         self.assertRedirectToEdit(resp, 'Exempel', None)
+        edit_url = resp.get('Location')
+
+        doc = self.get('/admin/blog/post/add/')
+        form = HtmlForm(self.client, doc.cssselect('form'))
+        form.referer = '/admin/blog/post/add/'
+        form['title'] = 'Exempel'
+        form['content'] = 'Ett litet exempel.\n\nI två stycken.'
+        form['posted_time_0'] = '2018-01-01'
+        form['posted_time_1'] = '22:47:32'
+        resp = form.submit()
+        self.assertRedirectToEdit(resp, 'Exempel', '/2018/01/exempel')
+
+        doc = self.get(edit_url)
+        form['posted_time_0'] = '2018-01-01'
+        form['posted_time_1'] = '22:47:32'
+        resp = form.submit()
+        self.assertRedirectToEdit(resp, 'Exempel', '/2018/01/exempel-2')
 
     def test_add_published_posts(self):
         self.assertTrue(self.client.login(username=self.user.username,
