@@ -43,7 +43,7 @@ class SimpleTest(TestCase):
                          [(a.text_content(), a.get('href'))
                            for a in doc.cssselect('.app-blog .model-post .addlink')])
 
-    def xtest_add_unpublished_post(self):
+    def test_add_post_publish_later(self):
         self.assertTrue(self.client.login(username=self.user.username,
                                           password='foo17bar'))
         doc = self.get('/admin/blog/post/add/')
@@ -53,7 +53,8 @@ class SimpleTest(TestCase):
         form.referer = '/admin/blog/post/add/'
         form['title'] = 'Exempel'
         form['content'] = 'Ett litet exempel.\n\nI två stycken.'
-        form.submit()
+        resp = form.submit()
+        self.assertRedirectToEdit(resp, 'Exempel', None)
 
     def test_add_published_posts(self):
         self.assertTrue(self.client.login(username=self.user.username,
@@ -68,12 +69,7 @@ class SimpleTest(TestCase):
         form['posted_time_0'] = '2018-01-01'
         form['posted_time_1'] = '22:47:32'
         resp = form.submit()
-        self.assertEqual((302, b''), (resp.status_code, resp.content))
-        m = re.match('/admin/blog/post/([0-9]+)/change/', resp.get('Location'))
-        self.assertTrue(m, 'Unexected redirect, got %r' % resp.get('Location'))
-        post = Post.objects.get(id=m.group(1))
-        self.assertEqual(('Exempel', '/2018/01/exempel'),
-                         (post.title, post.get_absolute_url()))
+        self.assertRedirectToEdit(resp, 'Exempel', '/2018/01/exempel')
 
         doc = self.get('/admin/blog/post/add/')
         form = HtmlForm(self.client, doc.cssselect('form'))
@@ -83,12 +79,7 @@ class SimpleTest(TestCase):
         form['posted_time_0'] = '2018-02-17'
         form['posted_time_1'] = '13:37:00'
         resp = form.submit()
-        self.assertEqual(302, resp.status_code)
-        m = re.match('/admin/blog/post/([0-9]+)/change/', resp.get('Location'))
-        self.assertTrue(m, 'Unexected redirect, got %r' % resp.get('Location'))
-        post = Post.objects.get(id=m.group(1))
-        self.assertEqual(('Exempel', '/2018/02/exempel'),
-                         (post.title, post.get_absolute_url()))
+        self.assertRedirectToEdit(resp, 'Exempel', '/2018/02/exempel')
 
         doc = self.get('/admin/blog/post/add/')
         form = HtmlForm(self.client, doc.cssselect('form'))
@@ -98,11 +89,14 @@ class SimpleTest(TestCase):
         form['posted_time_0'] = '2018-02-23'
         form['posted_time_1'] = '13:37:00'
         resp = form.submit()
+        self.assertRedirectToEdit(resp, 'Exempel', '/2018/02/exempel-2')
+
+    def assertRedirectToEdit(self, resp, post_title, post_url):
         self.assertEqual(302, resp.status_code)
         m = re.match('/admin/blog/post/([0-9]+)/change/', resp.get('Location'))
         self.assertTrue(m, 'Unexected redirect, got %r' % resp.get('Location'))
         post = Post.objects.get(id=m.group(1))
-        self.assertEqual(('Exempel', '/2018/02/exempel-2'),
+        self.assertEqual((post_title, post_url),
                          (post.title, post.get_absolute_url()))
 
 def find_text(doc, selector):

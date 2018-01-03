@@ -48,8 +48,10 @@ class Post(models.Model):
         return u'%s (%s)' % (self.title, self.posted_time)
 
     def get_absolute_url(self):
-        return '/%d/%02d/%s' % (self.posted_time.year, self.posted_time.month,
-                                self.slug)
+        if self.posted_time and self.slug:
+            return '/%d/%02d/%s' % (self.posted_time.year,
+                                    self.posted_time.month,
+                                    self.slug)
     def linkedshort(self, maxlen=600):
         if len(self.content) < maxlen:
             return mark_safe(textile(self.content))
