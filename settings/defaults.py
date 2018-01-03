@@ -2,6 +2,7 @@
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+PROD = False
 
 SITE = {
     'sitehead': 'Tygbittar<small>.krats.se</small>',
@@ -97,12 +98,13 @@ MEDIA_URL = '/media/'
 SECRET_KEY = '=_rw+(azo19&5=7$3a5-ez$g4a&pfim75c4%f@s7rg^@f4!7c6'
 
 MIDDLEWARE = [
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'urls'
