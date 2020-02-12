@@ -1,10 +1,10 @@
-Django >= 1.11, < 2
+Django ~= 2.2.10
 django-autoslug >= 1.7
 django-compressor >= 1.4
 python-memcached
 sorl-thumbnail >= 12.2
 textile >= 2.2
-psycopg2
+psycopg2-binary ~= 2.8.2
 Pillow
 
 # Production envirionment
