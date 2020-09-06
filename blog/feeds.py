@@ -14,8 +14,10 @@ class AtomFeed(Feed):
     def items(self):
         return Post.objects.exclude(posted_time__exact=None)[:7]
 
-    def item_pubdate(self, obj):
-        return obj.posted_time
+    def item_pubdate(self, item):
+        return item.posted_time
+    def item_updateddate(self, item):
+        return item.updated_at
 
     def item_author_name(self, item):
         return u'Katarina Kaj'

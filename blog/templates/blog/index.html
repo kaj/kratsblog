@@ -25,7 +25,8 @@
       </div>
     {% endwith %}
   {% endif %}
-  <p class="dateline">{{post.posted_time}}</p>
+  <p class="dateline">{{post.posted_time}}
+    {% if post.updated_later %}(updaterad {{post.updated_at}}){% endif %}</p>
   <div class="postContent">
     {{post.linkedshort}}
   </div>

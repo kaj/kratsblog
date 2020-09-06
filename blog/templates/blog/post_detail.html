@@ -5,8 +5,9 @@
 
 {% block main %}
   <h2>{{post.title}}</h2>
-  <p class="dateline">{{post.posted_time}}</p>
-  
+  <p class="dateline">{{post.posted_time}}
+    {% if post.updated_later %}(updaterad {{post.updated_at}}){% endif %}</p>
+
   <div class="postContent">
     {% for image in images %}
       <div class="image">

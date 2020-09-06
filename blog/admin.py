@@ -14,10 +14,17 @@ class ImagesInline(admin.TabularInline):
         return field
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'posted_time', 'first_image')
+    list_display = (
+        'title',
+        'posted_time', 'created_at', 'updated_at',
+        'first_image'
+    )
     search_fields = ('title', 'content')
+    ordering = ('-updated_at', )
     date_hierarchy = 'posted_time'
     exclude = ('slug',)
+    # Good stuff, but may need more horizontal screen space than its worth.
+    # list_filter = ('posted_time', 'updated_at', 'created_at')
     inlines = (ImagesInline,)
 
 admin.site.register(Post, PostAdmin)

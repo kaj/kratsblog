@@ -2,6 +2,7 @@
 from django.db import models
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
+from datetime import timedelta
 from textile import textile
 
 FMT_HELP = ('Formatering enligt Textile.  _kursiv_ *fet*, "länktext":url.  ' +
@@ -19,6 +20,10 @@ class Post(models.Model):
     posted_time = models.DateTimeField(
         null=True, blank=True, db_index=True,
         help_text=u'Lämna tomt för att lämna posten opublicerad.')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     slug = models.SlugField(db_index=True)
 
     class Meta:
@@ -74,6 +79,11 @@ class Post(models.Model):
 
     def content_markup(self):
         return mark_safe(textile(self.content))
+
+    @property
+    def updated_later(self):
+        # updated_at is set after posted_time, so allow some slack
+        return self.updated_at > self.posted_time + timedelta(minutes=5)
 
     @property
     def first_image(self):
