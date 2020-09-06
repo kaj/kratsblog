@@ -60,8 +60,8 @@ class SimpleTest(TestCase):
     def test_get_article(self):
         doc = self.get('/2017/12/hello-world')
         self.assertEqual(['Hello World'], find_text(doc, '#main h2'))
-        self.assertEqual(['17 december 2017 23:45'],
-                         find_text(doc, '#main p.dateline'))
+        publine, = find_text(doc, '#main p.dateline')
+        self.assertTrue('17 december 2017 23:45' in publine, publine)
         self.assertEqual(['Hello there, this is a test article',
                           'Containing two paragraphs of text.'],
                          find_text(doc, '#main .postContent p'))
