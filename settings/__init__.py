@@ -1,7 +1,10 @@
 # Collect actual settings
 
 from .defaults import *
-from .local import *
+try:
+    from .local import *
+except ImportError:
+    print("Error loading local settings");
 
 if PROD:
     # Set a bunch of security headers
