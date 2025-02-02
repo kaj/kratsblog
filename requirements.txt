@@ -2,7 +2,7 @@ Django ~= 2.2.28
 django-autoslug ~= 1.9.8
 django-compressor ~= 2.4
 python-memcached
-sorl-thumbnail >= 12.2
+sorl-thumbnail == 12.9.0
 textile ~= 4.0.1
 psycopg2-binary ~= 2.8.2
 Pillow
